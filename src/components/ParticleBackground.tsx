@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect } from 'react';
 
 interface Particle {
@@ -30,7 +31,7 @@ const ParticleBackground: React.FC = () => {
 
     const createParticles = () => {
       const particles: Particle[] = [];
-      const particleCount = Math.floor((canvas.width * canvas.height) / 10000);
+      const particleCount = Math.floor((canvas.width * canvas.height) / 12000);
 
       for (let i = 0; i < particleCount; i++) {
         particles.push({
@@ -40,7 +41,7 @@ const ParticleBackground: React.FC = () => {
           vy: (Math.random() - 0.5) * 0.5,
           size: Math.random() * 2 + 1,
           opacity: Math.random() * 0.8 + 0.2,
-          color: Math.random() > 0.5 ? '#00bfff' : '#FFD700'
+          color: Math.random() > 0.5 ? '#00bcd4' : '#2196f3'
         });
       }
 
@@ -52,30 +53,25 @@ const ParticleBackground: React.FC = () => {
       const mouse = mouseRef.current;
 
       particles.forEach(particle => {
-        // Move particles
         particle.x += particle.vx;
         particle.y += particle.vy;
 
-        // Mouse interaction
         const dx = mouse.x - particle.x;
         const dy = mouse.y - particle.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
-        if (distance < 100) {
-          const force = (100 - distance) / 100;
-          particle.vx -= (dx / distance) * force * 0.01;
-          particle.vy -= (dy / distance) * force * 0.01;
+        if (distance < 120) {
+          const force = (120 - distance) / 120;
+          particle.vx -= (dx / distance) * force * 0.008;
+          particle.vy -= (dy / distance) * force * 0.008;
         }
 
-        // Boundary check
         if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
         if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
 
-        // Keep particles in bounds
         particle.x = Math.max(0, Math.min(canvas.width, particle.x));
         particle.y = Math.max(0, Math.min(canvas.height, particle.y));
 
-        // Damping
         particle.vx *= 0.999;
         particle.vy *= 0.999;
       });
@@ -85,16 +81,15 @@ const ParticleBackground: React.FC = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       const particles = particlesRef.current;
 
-      // Draw connections
       particles.forEach((particle, i) => {
         particles.slice(i + 1).forEach(otherParticle => {
           const dx = particle.x - otherParticle.x;
           const dy = particle.y - otherParticle.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
 
-          if (distance < 80) {
+          if (distance < 100) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(0, 191, 255, ${0.2 * (1 - distance / 80)})`;
+            ctx.strokeStyle = `rgba(0, 188, 212, ${0.15 * (1 - distance / 100)})`;
             ctx.lineWidth = 0.5;
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(otherParticle.x, otherParticle.y);
@@ -103,13 +98,12 @@ const ParticleBackground: React.FC = () => {
         });
       });
 
-      // Draw particles
       particles.forEach(particle => {
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = particle.color === '#00bfff' 
-          ? `rgba(0, 191, 255, ${particle.opacity})` 
-          : `rgba(255, 215, 0, ${particle.opacity})`;
+        ctx.fillStyle = particle.color === '#00bcd4' 
+          ? `rgba(0, 188, 212, ${particle.opacity})` 
+          : `rgba(33, 150, 243, ${particle.opacity})`;
         ctx.fill();
       });
     };
@@ -132,12 +126,10 @@ const ParticleBackground: React.FC = () => {
       createParticles();
     };
 
-    // Initialize
     resizeCanvas();
     createParticles();
     animate();
 
-    // Event listeners
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('resize', handleResize);
 

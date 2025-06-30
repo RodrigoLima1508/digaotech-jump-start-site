@@ -1,5 +1,14 @@
+
 import { useState } from "react";
-import MarioAnimation from "@/components/MarioAnimation"; // ajuste o caminho conforme sua pasta
+import MarioAnimation from "@/components/MarioAnimation";
+import Header from "@/components/Header";
+import HeroSection from "@/components/HeroSection";
+import AboutSection from "@/components/AboutSection";
+import ServicesSection from "@/components/ServicesSection";
+import ProjectsSection from "@/components/ProjectsSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import ContactSection from "@/components/ContactSection";
+import Footer from "@/components/Footer";
 
 export default function Index() {
   const [showAnimation, setShowAnimation] = useState(true);
@@ -9,12 +18,17 @@ export default function Index() {
   }
 
   return (
-    <main className="pt-20">
-      <section className="container mx-auto px-6 text-center">
-        <h1 className="text-5xl font-bold mb-6 text-neon-blue">Bem-vindo à Digaotech</h1>
-        <p className="text-lg text-muted">Soluções tecnológicas com criatividade e inovação.</p>
-        {/* Adicione aqui os outros componentes da página após a animação */}
-      </section>
-    </main>
+    <div className="min-h-screen bg-background text-foreground">
+      <Header />
+      <main>
+        <HeroSection />
+        <AboutSection />
+        <ServicesSection />
+        <ProjectsSection />
+        <TestimonialsSection />
+        <ContactSection />
+      </main>
+      <Footer />
+    </div>
   );
 }

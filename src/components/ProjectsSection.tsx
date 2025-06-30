@@ -11,34 +11,30 @@ const ProjectsSection: React.FC = () => {
   const [selectedLanguage, setSelectedLanguage] = useState<string>('all');
   const [searchTerm, setSearchTerm] = useState<string>('');
 
-  // Featured projects (manual showcase)
   const featuredProjects = [
     {
       title: "E-commerce Moderno",
       description: "Plataforma completa de e-commerce com React, Node.js, Stripe e dashboard administrativo.",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       tech: ["React", "Node.js", "MongoDB", "Stripe"],
       demo: "#",
-      github: "#",
-      featured: true
+      github: "#"
     },
     {
       title: "Sistema de Gestão",
       description: "ERP completo para pequenas e médias empresas com controle de estoque, vendas e financeiro.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       tech: ["Vue.js", "Laravel", "MySQL", "Docker"],
       demo: "#",
-      github: "#",
-      featured: true
+      github: "#"
     },
     {
       title: "App de Delivery",
       description: "Aplicativo mobile para delivery com geolocalização, pagamentos online e sistema de avaliações.",
-      image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       tech: ["React Native", "Firebase", "Maps API", "PayPal"],
       demo: "#",
-      github: "#",
-      featured: true
+      github: "#"
     }
   ];
 
@@ -63,12 +59,10 @@ const ProjectsSection: React.FC = () => {
   useEffect(() => {
     let filtered = repos;
 
-    // Filter by language
     if (selectedLanguage !== 'all') {
       filtered = filtered.filter(repo => repo.language === selectedLanguage);
     }
 
-    // Filter by search term
     if (searchTerm) {
       filtered = filtered.filter(repo =>
         repo.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -88,9 +82,9 @@ const ProjectsSection: React.FC = () => {
   }, [repos]);
 
   const ProjectCard: React.FC<{ repo: GitHubRepo }> = ({ repo }) => (
-    <div className="bg-card rounded-xl p-6 border border-border hover:border-neon-blue/50 transition-all duration-300 group hover:scale-105">
+    <div className="bg-card rounded-xl p-6 border border-border hover:border-cyan-400/50 transition-all duration-300 group hover:scale-105">
       <div className="flex items-start justify-between mb-4">
-        <h4 className="text-lg font-semibold group-hover:text-neon-blue transition-colors duration-300 line-clamp-1">
+        <h4 className="text-lg font-semibold group-hover:text-cyan-400 transition-colors duration-300 line-clamp-1">
           {repo.name}
         </h4>
         <div className="flex items-center space-x-2">
@@ -99,7 +93,7 @@ const ProjectsSection: React.FC = () => {
               href={repo.homepage}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-neon-gold transition-colors duration-300"
+              className="text-muted-foreground hover:text-blue-500 transition-colors duration-300"
               title="Demo"
             >
               <ExternalLink className="w-4 h-4" />
@@ -109,7 +103,7 @@ const ProjectsSection: React.FC = () => {
             href={repo.html_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-neon-blue transition-colors duration-300"
+            className="text-muted-foreground hover:text-cyan-400 transition-colors duration-300"
             title="GitHub"
           >
             <Github className="w-4 h-4" />
@@ -151,7 +145,7 @@ const ProjectsSection: React.FC = () => {
           {repo.topics.slice(0, 4).map((topic, index) => (
             <span
               key={index}
-              className="px-2 py-0.5 bg-neon-blue/10 text-neon-blue text-xs rounded-full"
+              className="px-2 py-0.5 bg-cyan-400/10 text-cyan-400 text-xs rounded-full"
             >
               {topic}
             </span>
@@ -169,18 +163,16 @@ const ProjectsSection: React.FC = () => {
   return (
     <section id="projects" className="py-20 bg-muted/30">
       <div className="container mx-auto px-6">
-        {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Galeria de <span className="gradient-text">Projetos</span>
+            Galeria de <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Projetos</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-neon-blue to-neon-gold mx-auto mb-6"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto mb-6"></div>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Conheça nossos projetos em destaque e contribuições open source sincronizadas diretamente do GitHub.
           </p>
         </div>
 
-        {/* Featured Projects */}
         <div className="mb-16">
           <h3 className="text-2xl font-bold mb-8 flex items-center space-x-2">
             <span>🌟 Projetos em Destaque</span>
@@ -189,7 +181,7 @@ const ProjectsSection: React.FC = () => {
             {featuredProjects.map((project, index) => (
               <div
                 key={index}
-                className="bg-card rounded-2xl overflow-hidden border border-border hover:border-neon-gold/50 transition-all duration-300 group hover:scale-105"
+                className="bg-card rounded-2xl overflow-hidden border border-border hover:border-blue-500/50 transition-all duration-300 group hover:scale-105"
               >
                 <div className="aspect-video overflow-hidden relative">
                   <img
@@ -197,12 +189,12 @@ const ProjectsSection: React.FC = () => {
                     alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute top-4 right-4 bg-neon-gold text-black px-2 py-1 rounded-full text-xs font-bold">
+                  <div className="absolute top-4 right-4 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold">
                     Destaque
                   </div>
                 </div>
                 <div className="p-6">
-                  <h4 className="text-xl font-bold mb-3 group-hover:text-neon-gold transition-colors duration-300">
+                  <h4 className="text-xl font-bold mb-3 group-hover:text-blue-500 transition-colors duration-300">
                     {project.title}
                   </h4>
                   <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
@@ -213,7 +205,7 @@ const ProjectsSection: React.FC = () => {
                     {project.tech.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="px-2 py-1 bg-neon-gold/10 text-neon-gold text-xs rounded-full"
+                        className="px-2 py-1 bg-blue-500/10 text-blue-500 text-xs rounded-full"
                       >
                         {tech}
                       </span>
@@ -223,14 +215,14 @@ const ProjectsSection: React.FC = () => {
                   <div className="flex space-x-4">
                     <a
                       href={project.demo}
-                      className="flex items-center space-x-1 text-neon-gold hover:text-neon-blue transition-colors duration-300"
+                      className="flex items-center space-x-1 text-blue-500 hover:text-cyan-400 transition-colors duration-300"
                     >
                       <ExternalLink className="w-4 h-4" />
                       <span className="text-sm">Demo</span>
                     </a>
                     <a
                       href={project.github}
-                      className="flex items-center space-x-1 text-muted-foreground hover:text-neon-blue transition-colors duration-300"
+                      className="flex items-center space-x-1 text-muted-foreground hover:text-cyan-400 transition-colors duration-300"
                     >
                       <Github className="w-4 h-4" />
                       <span className="text-sm">GitHub</span>
@@ -242,20 +234,17 @@ const ProjectsSection: React.FC = () => {
           </div>
         </div>
 
-        {/* GitHub Repositories */}
         <div>
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center space-x-3">
-              <Github className="w-6 h-6 text-neon-blue" />
+              <Github className="w-6 h-6 text-cyan-400" />
               <h3 className="text-2xl font-bold">Repositórios GitHub</h3>
-              <div className="px-3 py-1 bg-neon-blue/10 text-neon-blue text-sm rounded-full">
+              <div className="px-3 py-1 bg-cyan-400/10 text-cyan-400 text-sm rounded-full">
                 Sincronizado
               </div>
             </div>
             
-            {/* Filters */}
             <div className="flex items-center space-x-4">
-              {/* Search */}
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <input
@@ -263,17 +252,16 @@ const ProjectsSection: React.FC = () => {
                   placeholder="Buscar projetos..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 pr-4 py-2 bg-card border border-border rounded-lg focus:ring-2 focus:ring-neon-blue focus:border-transparent text-sm"
+                  className="pl-10 pr-4 py-2 bg-card border border-border rounded-lg focus:ring-2 focus:ring-cyan-400 focus:border-transparent text-sm"
                 />
               </div>
               
-              {/* Language Filter */}
               <div className="relative">
                 <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <select
                   value={selectedLanguage}
                   onChange={(e) => setSelectedLanguage(e.target.value)}
-                  className="pl-10 pr-8 py-2 bg-card border border-border rounded-lg focus:ring-2 focus:ring-neon-blue focus:border-transparent text-sm appearance-none"
+                  className="pl-10 pr-8 py-2 bg-card border border-border rounded-lg focus:ring-2 focus:ring-cyan-400 focus:border-transparent text-sm appearance-none"
                 >
                   <option value="all">Todas linguagens</option>
                   {languages.map(lang => (
@@ -286,7 +274,7 @@ const ProjectsSection: React.FC = () => {
           
           {loading ? (
             <div className="text-center py-12">
-              <div className="animate-spin w-8 h-8 border-2 border-neon-blue border-t-transparent rounded-full mx-auto mb-4"></div>
+              <div className="animate-spin w-8 h-8 border-2 border-cyan-400 border-t-transparent rounded-full mx-auto mb-4"></div>
               <p className="text-muted-foreground">Carregando projetos do GitHub...</p>
             </div>
           ) : error ? (
@@ -311,8 +299,7 @@ const ProjectsSection: React.FC = () => {
           )}
         </div>
 
-        {/* CTA */}
-        <div className="text-center mt-16 bg-gradient-to-r from-neon-blue/10 to-neon-gold/10 rounded-2xl p-8 border border-neon-blue/20">
+        <div className="text-center mt-16 bg-gradient-to-r from-cyan-400/10 to-blue-500/10 rounded-2xl p-8 border border-cyan-400/20">
           <h3 className="text-2xl font-bold mb-4">Interessado em um projeto personalizado?</h3>
           <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
             Trabalhamos com as mais modernas tecnologias para entregar soluções que fazem a diferença. 
@@ -320,7 +307,7 @@ const ProjectsSection: React.FC = () => {
           </p>
           <a
             href="#contact"
-            className="inline-flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-neon-blue to-blue-600 text-white font-semibold rounded-lg hover:scale-105 transition-all duration-300 neon-glow"
+            className="inline-flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-white font-semibold rounded-lg hover:scale-105 transition-all duration-300 shadow-lg"
           >
             <span>Iniciar Projeto</span>
             <ExternalLink className="w-4 h-4" />

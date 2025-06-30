@@ -1,13 +1,13 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
-    const darkMode = localStorage.getItem('darkMode') === 'true';
+    const darkMode = localStorage.getItem('darkMode') !== 'false';
     setIsDarkMode(darkMode);
     document.documentElement.classList.toggle('dark', darkMode);
   }, []);
@@ -28,15 +28,18 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <header className="fixed top-0 w-full bg-background/95 backdrop-blur-md border-b border-border z-40">
+    <header className="fixed top-0 w-full bg-background/95 backdrop-blur-md border-b border-border z-40 transition-all duration-300">
       <nav className="container mx-auto px-6 py-4">
-        <div className="flex items-center space-x-2">
-  <div className="w-12 h-12 bg-gradient-to-r from-neon-blue to-neon-gold rounded-lg flex items-center justify-center neon-glow">
-    <span className="text-white font-bold text-2xl">D</span>
-  </div>
-  <span className="text-2xl font-bold gradient-text whitespace-nowrap">DIGAOTECH</span>
-</div>
-
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <div className="flex items-center space-x-3">
+            <div className="w-12 h-12 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-xl flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300">
+              <span className="text-white font-bold text-2xl">D</span>
+            </div>
+            <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              DIGAOTECH
+            </span>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
@@ -44,19 +47,19 @@ const Header: React.FC = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-foreground hover:text-neon-blue transition-colors duration-300 font-medium relative group"
+                className="text-foreground hover:text-cyan-400 transition-colors duration-300 font-medium relative group"
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-neon-blue transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
             
             {/* Dark Mode Toggle */}
             <button
               onClick={toggleDarkMode}
-              className="p-2 rounded-lg bg-accent hover:bg-accent/80 transition-colors duration-300"
+              className="p-2 rounded-lg bg-accent hover:bg-accent/80 transition-all duration-300"
             >
-              {isDarkMode ? '☀️' : '🌙'}
+              {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
           </div>
 
@@ -77,7 +80,7 @@ const Header: React.FC = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-foreground hover:text-neon-blue transition-colors duration-300 font-medium py-2"
+                  className="text-foreground hover:text-cyan-400 transition-colors duration-300 font-medium py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
@@ -87,7 +90,7 @@ const Header: React.FC = () => {
                 onClick={toggleDarkMode}
                 className="flex items-center space-x-2 p-2 rounded-lg bg-accent hover:bg-accent/80 transition-colors duration-300 self-start"
               >
-                <span>{isDarkMode ? '☀️' : '🌙'}</span>
+                {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
                 <span>{isDarkMode ? 'Modo Claro' : 'Modo Escuro'}</span>
               </button>
             </div>

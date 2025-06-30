@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, Linkedin, Github, Twitter, Instagram } from 'lucide-react';
 
 const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -24,13 +24,11 @@ const ContactSection: React.FC = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simular envio do formulário
     await new Promise(resolve => setTimeout(resolve, 2000));
     
     setIsSubmitting(false);
     setIsSubmitted(true);
     
-    // Reset form after 3 seconds
     setTimeout(() => {
       setIsSubmitted(false);
       setFormData({
@@ -64,22 +62,27 @@ const ContactSection: React.FC = () => {
     }
   ];
 
+  const socialLinks = [
+    { name: 'LinkedIn', icon: <Linkedin className="w-5 h-5" />, url: '#', color: 'hover:text-blue-600' },
+    { name: 'GitHub', icon: <Github className="w-5 h-5" />, url: '#', color: 'hover:text-gray-800' },
+    { name: 'Twitter', icon: <Twitter className="w-5 h-5" />, url: '#', color: 'hover:text-blue-400' },
+    { name: 'Instagram', icon: <Instagram className="w-5 h-5" />, url: '#', color: 'hover:text-pink-500' }
+  ];
+
   return (
     <section id="contact" className="py-20">
       <div className="container mx-auto px-6">
-        {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Entre em <span className="gradient-text">Contato</span>
+            Entre em <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Contato</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-neon-blue to-neon-gold mx-auto mb-6"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto mb-6"></div>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Pronto para transformar sua ideia em realidade? Entre em contato conosco e vamos conversar sobre seu próximo projeto.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Info */}
           <div className="space-y-8">
             <div>
               <h3 className="text-2xl font-bold mb-6">Vamos conversar!</h3>
@@ -90,19 +93,18 @@ const ContactSection: React.FC = () => {
               </p>
             </div>
 
-            {/* Contact Cards */}
             <div className="space-y-4">
               {contactInfo.map((info, index) => (
                 <a
                   key={index}
                   href={info.link}
-                  className="flex items-center space-x-4 p-4 bg-card rounded-xl border border-border hover:border-neon-blue/50 transition-all duration-300 group"
+                  className="flex items-center space-x-4 p-4 bg-card rounded-xl border border-border hover:border-cyan-400/50 transition-all duration-300 group"
                 >
-                  <div className="p-3 bg-gradient-to-r from-neon-blue to-neon-gold rounded-lg text-white group-hover:scale-110 transition-transform duration-300">
+                  <div className="p-3 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg text-white group-hover:scale-110 transition-transform duration-300">
                     {info.icon}
                   </div>
                   <div>
-                    <h4 className="font-semibold group-hover:text-neon-blue transition-colors duration-300">
+                    <h4 className="font-semibold group-hover:text-cyan-400 transition-colors duration-300">
                       {info.title}
                     </h4>
                     <p className="text-muted-foreground">{info.value}</p>
@@ -111,20 +113,15 @@ const ContactSection: React.FC = () => {
               ))}
             </div>
 
-            {/* Social Links */}
             <div className="pt-8">
               <h4 className="font-semibold mb-4">Nos siga nas redes sociais</h4>
               <div className="flex space-x-4">
-                {[
-                  { name: 'LinkedIn', url: '#', icon: '💼' },
-                  { name: 'GitHub', url: '#', icon: '🐙' },
-                  { name: 'Twitter', url: '#', icon: '🐦' },
-                  { name: 'Instagram', url: '#', icon: '📷' }
-                ].map((social, index) => (
+                {socialLinks.map((social, index) => (
                   <a
                     key={index}
                     href={social.url}
-                    className="w-12 h-12 bg-card border border-border rounded-lg flex items-center justify-center hover:border-neon-blue/50 hover:scale-110 transition-all duration-300 text-xl"
+                    className={`w-12 h-12 bg-card border border-border rounded-lg flex items-center justify-center hover:border-cyan-400/50 hover:scale-110 transition-all duration-300 ${social.color}`}
+                    title={social.name}
                   >
                     {social.icon}
                   </a>
@@ -133,7 +130,6 @@ const ContactSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Contact Form */}
           <div className="bg-card rounded-2xl p-8 border border-border">
             {isSubmitted ? (
               <div className="text-center py-12">
@@ -157,7 +153,7 @@ const ContactSection: React.FC = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-neon-blue focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all duration-300"
                       placeholder="Seu nome completo"
                     />
                   </div>
@@ -172,7 +168,7 @@ const ContactSection: React.FC = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-neon-blue focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all duration-300"
                       placeholder="seu@email.com"
                     />
                   </div>
@@ -188,7 +184,7 @@ const ContactSection: React.FC = () => {
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-neon-blue focus:border-transparent transition-all duration-300"
+                    className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all duration-300"
                     placeholder="Nome da sua empresa"
                   />
                 </div>
@@ -203,7 +199,7 @@ const ContactSection: React.FC = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-neon-blue focus:border-transparent transition-all duration-300"
+                    className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all duration-300"
                   >
                     <option value="">Selecione um assunto</option>
                     <option value="desenvolvimento-web">Desenvolvimento Web</option>
@@ -225,7 +221,7 @@ const ContactSection: React.FC = () => {
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-neon-blue focus:border-transparent transition-all duration-300 resize-none"
+                    className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all duration-300 resize-none"
                     placeholder="Conte-nos sobre seu projeto ou dúvida..."
                   />
                 </div>
@@ -233,7 +229,7 @@ const ContactSection: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full flex items-center justify-center space-x-2 px-8 py-4 bg-gradient-to-r from-neon-blue to-blue-600 text-white font-semibold rounded-lg hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed neon-glow"
+                  className="w-full flex items-center justify-center space-x-2 px-8 py-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-white font-semibold rounded-lg hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
                 >
                   {isSubmitting ? (
                     <>

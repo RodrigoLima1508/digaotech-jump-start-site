@@ -103,82 +103,72 @@ const TestimonialsSection: React.FC = () => {
   return (
     <section className="py-20 bg-gradient-to-br from-background to-muted/30">
       <div className="container mx-auto px-6">
-        {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            O que nossos <span className="gradient-text">clientes</span> dizem
+            O que nossos <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">clientes</span> dizem
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-neon-blue to-neon-gold mx-auto mb-6"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto mb-6"></div>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Depoimentos reais de clientes que confiaram na Digaotech para transformar seus negócios.
           </p>
         </div>
 
-        {/* Main Testimonial */}
         <div className="max-w-4xl mx-auto">
           <div 
             className="bg-card rounded-3xl p-8 md:p-12 border border-border relative overflow-hidden"
             onMouseEnter={() => setIsAutoPlaying(false)}
             onMouseLeave={() => setIsAutoPlaying(true)}
           >
-            {/* Decorative elements */}
-            <div className="absolute top-6 left-6 text-6xl text-neon-blue/10">
+            <div className="absolute top-6 left-6 text-6xl text-cyan-400/10">
               <Quote className="w-16 h-16" />
             </div>
-            <div className="absolute bottom-6 right-6 text-6xl text-neon-gold/10 transform rotate-180">
+            <div className="absolute bottom-6 right-6 text-6xl text-blue-500/10 transform rotate-180">
               <Quote className="w-16 h-16" />
             </div>
 
-            {/* Content */}
             <div className="relative z-10">
-              {/* Stars */}
               <div className="flex justify-center mb-6">
                 {Array.from({ length: currentTestimonialData.rating }).map((_, index) => (
-                  <Star key={index} className="w-6 h-6 text-neon-gold fill-current" />
+                  <Star key={index} className="w-6 h-6 text-yellow-400 fill-current" />
                 ))}
               </div>
 
-              {/* Comment */}
               <blockquote className="text-lg md:text-xl text-center leading-relaxed mb-8 font-medium">
                 "{currentTestimonialData.comment}"
               </blockquote>
 
-              {/* Project info */}
-              <div className="text-center text-sm text-neon-blue mb-6 font-semibold">
+              <div className="text-center text-sm text-cyan-400 mb-6 font-semibold">
                 Projeto: {currentTestimonialData.project}
               </div>
 
-              {/* Author */}
               <div className="flex items-center justify-center space-x-4">
                 <img
                   src={currentTestimonialData.avatar}
                   alt={currentTestimonialData.name}
-                  className="w-16 h-16 rounded-full object-cover ring-4 ring-neon-blue/20"
+                  className="w-16 h-16 rounded-full object-cover ring-4 ring-cyan-400/20"
                 />
                 <div className="text-center">
                   <h4 className="font-bold text-lg">{currentTestimonialData.name}</h4>
                   <p className="text-muted-foreground">{currentTestimonialData.position}</p>
-                  <p className="text-neon-blue font-semibold text-sm">{currentTestimonialData.company}</p>
+                  <p className="text-cyan-400 font-semibold text-sm">{currentTestimonialData.company}</p>
                 </div>
               </div>
             </div>
 
-            {/* Navigation Arrows */}
             <button
               onClick={prevTestimonial}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 p-3 bg-neon-blue/10 hover:bg-neon-blue/20 rounded-full transition-all duration-300 group"
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 p-3 bg-cyan-400/10 hover:bg-cyan-400/20 rounded-full transition-all duration-300 group"
             >
-              <ChevronLeft className="w-6 h-6 text-neon-blue group-hover:scale-110 transition-transform duration-300" />
+              <ChevronLeft className="w-6 h-6 text-cyan-400 group-hover:scale-110 transition-transform duration-300" />
             </button>
             <button
               onClick={nextTestimonial}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 p-3 bg-neon-blue/10 hover:bg-neon-blue/20 rounded-full transition-all duration-300 group"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 p-3 bg-cyan-400/10 hover:bg-cyan-400/20 rounded-full transition-all duration-300 group"
             >
-              <ChevronRight className="w-6 h-6 text-neon-blue group-hover:scale-110 transition-transform duration-300" />
+              <ChevronRight className="w-6 h-6 text-cyan-400 group-hover:scale-110 transition-transform duration-300" />
             </button>
           </div>
 
-          {/* Dots Navigation */}
           <div className="flex justify-center space-x-3 mt-8">
             {testimonials.map((_, index) => (
               <button
@@ -186,33 +176,31 @@ const TestimonialsSection: React.FC = () => {
                 onClick={() => goToTestimonial(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   index === currentTestimonial
-                    ? 'bg-neon-blue scale-125'
-                    : 'bg-muted-foreground/30 hover:bg-neon-blue/50'
+                    ? 'bg-cyan-400 scale-125'
+                    : 'bg-muted-foreground/30 hover:bg-cyan-400/50'
                 }`}
               />
             ))}
           </div>
 
-          {/* Auto-play indicator */}
           <div className="text-center mt-4">
             <button
               onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-              className="text-sm text-muted-foreground hover:text-neon-blue transition-colors duration-300"
+              className="text-sm text-muted-foreground hover:text-cyan-400 transition-colors duration-300"
             >
               {isAutoPlaying ? '⏸️ Pausar' : '▶️ Reproduzir'} slideshow automático
             </button>
           </div>
         </div>
 
-        {/* Mini testimonials grid */}
         <div className="grid md:grid-cols-3 gap-6 mt-16 max-w-6xl mx-auto">
           {testimonials.slice(0, 3).map((testimonial, index) => (
             <div
               key={testimonial.id}
               className={`bg-card/50 backdrop-blur-sm rounded-xl p-6 border transition-all duration-300 hover:scale-105 cursor-pointer ${
                 index === currentTestimonial % 3
-                  ? 'border-neon-blue/50 bg-neon-blue/5'
-                  : 'border-border hover:border-neon-blue/30'
+                  ? 'border-cyan-400/50 bg-cyan-400/5'
+                  : 'border-border hover:border-cyan-400/30'
               }`}
               onClick={() => goToTestimonial(index)}
             >
@@ -229,7 +217,7 @@ const TestimonialsSection: React.FC = () => {
               </div>
               <div className="flex mb-2">
                 {Array.from({ length: testimonial.rating }).map((_, starIndex) => (
-                  <Star key={starIndex} className="w-4 h-4 text-neon-gold fill-current" />
+                  <Star key={starIndex} className="w-4 h-4 text-yellow-400 fill-current" />
                 ))}
               </div>
               <p className="text-sm text-muted-foreground line-clamp-3">
