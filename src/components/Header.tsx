@@ -30,14 +30,13 @@ const Header: React.FC = () => {
   return (
     <header className="fixed top-0 w-full bg-background/95 backdrop-blur-md border-b border-border z-40">
       <nav className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-r from-neon-blue to-neon-gold rounded-lg flex items-center justify-center neon-glow">
-              <span className="text-white font-bold text-xl">D</span>
-            </div>
-            <span className="text-2xl font-bold gradient-text">DIGAOTECH</span>
-          </div>
+        <div className="flex items-center space-x-2">
+  <div className="w-12 h-12 bg-gradient-to-r from-neon-blue to-neon-gold rounded-lg flex items-center justify-center neon-glow">
+    <span className="text-white font-bold text-2xl">D</span>
+  </div>
+  <span className="text-2xl font-bold gradient-text whitespace-nowrap">DIGAOTECH</span>
+</div>
+
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
