@@ -161,10 +161,11 @@ const MarioAnimation: React.FC<MarioAnimationProps> = ({ onComplete }) => {
         
         // Create and animate coin
         const coin = new Coin(blocks[i].x + 40, blocks[i].y);
-        gameState.coins.push(coin);
-        await coin.animate();
-        
-        setGameState({ ...gameState });
+       setGameState(prev => ({
+  ...prev,
+  coins: [...prev.coins, coin]
+}));
+
         await new Promise(resolve => setTimeout(resolve, 500));
       }
       
