@@ -340,7 +340,12 @@ All colors MUST be HSL.
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  
+  .gradient-text {
+  background: linear-gradient(to right, #00bfff, #FFD700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
   .animate-bounce,
   .animate-spin,
   .animate-ping,
