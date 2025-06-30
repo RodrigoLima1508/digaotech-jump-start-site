@@ -4,30 +4,122 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Digaotech - Transformando Ideias em Soluções Tecnológicas</title>
-    <meta name="description" content="Desenvolvimento web moderno, apps mobile, automações e IA. A Digaotech transforma suas ideias em soluções tecnológicas inovadoras." />
+    
+    <!-- Primary Meta Tags -->
+    <title>Digaotech - Construindo o Futuro com Tecnologia | Desenvolvimento Web, Mobile e IA</title>
+    <meta name="title" content="Digaotech - Construindo o Futuro com Tecnologia" />
+    <meta name="description" content="A Digaotech entrega soluções digitais inteligentes, escaláveis e de alto desempenho. Desenvolvimento web, mobile, automações, IA e consultoria tecnológica." />
+    <meta name="keywords" content="desenvolvimento web, mobile, React, Node.js, Python, IA, automação, RPA, consultoria tecnológica, sistemas web, aplicativos, API, cloud, AWS, Azure" />
     <meta name="author" content="Digaotech" />
-    <meta name="keywords" content="desenvolvimento web, apps mobile, automação, IA, React, Node.js, tecnologia" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="Portuguese" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Digaotech - Transformando Ideias em Soluções Tecnológicas" />
-    <meta property="og:description" content="Desenvolvimento web moderno, apps mobile, automações e IA. Transformamos suas ideias em realidade digital." />
+    <meta property="og:url" content="https://digaotech.com/" />
+    <meta property="og:title" content="Digaotech - Construindo o Futuro com Tecnologia" />
+    <meta property="og:description" content="Desenvolvimento web moderno, apps mobile, automações e IA. A Digaotech transforma suas ideias em realidade digital com soluções inovadoras e escaláveis." />
     <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Digaotech" />
+    <meta property="og:locale" content="pt_BR" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://digaotech.com/" />
     <meta name="twitter:title" content="Digaotech - Soluções Tecnológicas Inovadoras" />
-    <meta name="twitter:description" content="Desenvolvimento web, mobile, automações e IA para o seu negócio." />
+    <meta name="twitter:description" content="Desenvolvimento web, mobile, automações e IA para o seu negócio. Transformamos ideias em realidade digital." />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta name="twitter:creator" content="@digaotech" />
+
+    <!-- Additional Meta Tags -->
+    <meta name="theme-color" content="#00bfff" />
+    <meta name="msapplication-TileColor" content="#00bfff" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://digaotech.com/" />
 
     <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>" />
+    <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>" />
+
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://api.github.com" />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//api.github.com" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Digaotech",
+      "url": "https://digaotech.com",
+      "logo": "https://digaotech.com/logo.png",
+      "description": "Empresa de tecnologia especializada em desenvolvimento web, mobile, automações e inteligência artificial",
+      "foundingDate": "2016",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "São Paulo",
+        "addressRegion": "SP",
+        "addressCountry": "BR"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+55-11-99999-9999",
+        "contactType": "customer service",
+        "availableLanguage": "Portuguese"
+      },
+      "sameAs": [
+        "https://github.com/digaotech",
+        "https://linkedin.com/company/digaotech",
+        "https://twitter.com/digaotech"
+      ],
+      "service": [
+        {
+          "@type": "Service",
+          "name": "Desenvolvimento Web",
+          "description": "Desenvolvimento de aplicações web modernas com React, Next.js e tecnologias avançadas"
+        },
+        {
+          "@type": "Service",
+          "name": "Desenvolvimento Mobile",
+          "description": "Criação de aplicativos nativos e híbridos para iOS e Android"
+        },
+        {
+          "@type": "Service",
+          "name": "Automação e IA",
+          "description": "Soluções de automação de processos e integração de inteligência artificial"
+        }
+      ]
+    }
+    </script>
+
+    <!-- Performance hints -->
+    <link rel="preload" href="/src/main.tsx" as="script" />
   </head>
 
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- NoScript fallback -->
+    <noscript>
+      <div style="text-align: center; padding: 50px; font-family: Arial, sans-serif;">
+        <h1>Digaotech</h1>
+        <p>Para uma melhor experiência, por favor habilite o JavaScript em seu navegador.</p>
+        <p>Entre em contato conosco através do email: contato@digaotech.com</p>
+      </div>
+    </noscript>
   </body>
 </html>
