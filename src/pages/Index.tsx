@@ -1,58 +1,20 @@
+import { useState } from "react";
+import MarioAnimation from "@/components/MarioAnimation"; // ajuste o caminho conforme sua pasta
 
-import React, { useState, useEffect } from 'react';
-import MarioAnimation from '../components/MarioAnimation';
-import Header from '../components/Header';
-import HeroSection from '../components/HeroSection';
-import AboutSection from '../components/AboutSection';
-import ServicesSection from '../components/ServicesSection';
-import ProjectsSection from '../components/ProjectsSection';
-import TestimonialsSection from '../components/TestimonialsSection';
-import ContactSection from '../components/ContactSection';
-import Footer from '../components/Footer';
+export default function Index() {
+  const [showAnimation, setShowAnimation] = useState(true);
 
-const Index = () => {
-  const [showMarioAnimation, setShowMarioAnimation] = useState(true);
-  const [showContent, setShowContent] = useState(false);
-
-  useEffect(() => {
-    // Check if animation was already shown in this session
-    const animationShown = sessionStorage.getItem('marioAnimationShown');
-    if (animationShown) {
-      setShowMarioAnimation(false);
-      setShowContent(true);
-    }
-  }, []);
-
-  const handleAnimationComplete = () => {
-    setShowMarioAnimation(false);
-    setShowContent(true);
-    sessionStorage.setItem('marioAnimationShown', 'true');
-  };
+  if (showAnimation) {
+    return <MarioAnimation onComplete={() => setShowAnimation(false)} />;
+  }
 
   return (
-    <div className="min-h-screen">
-      {/* Mario Animation */}
-      {showMarioAnimation && (
-        <MarioAnimation onComplete={handleAnimationComplete} />
-      )}
-
-      {/* Main Content */}
-      {showContent && (
-        <div className="animate-fade-in">
-          <Header />
-          <main>
-            <HeroSection />
-            <AboutSection />
-            <ServicesSection />
-            <ProjectsSection />
-            <TestimonialsSection />
-            <ContactSection />
-          </main>
-          <Footer />
-        </div>
-      )}
-    </div>
+    <main className="pt-20">
+      <section className="container mx-auto px-6 text-center">
+        <h1 className="text-5xl font-bold mb-6 text-neon-blue">Bem-vindo à Digaotech</h1>
+        <p className="text-lg text-muted">Soluções tecnológicas com criatividade e inovação.</p>
+        {/* Adicione aqui os outros componentes da página após a animação */}
+      </section>
+    </main>
   );
-};
-
-export default Index;
+}
