@@ -1,12 +1,54 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React, { useState, useEffect } from 'react';
+import MarioAnimation from '../components/MarioAnimation';
+import Header from '../components/Header';
+import HeroSection from '../components/HeroSection';
+import AboutSection from '../components/AboutSection';
+import ServicesSection from '../components/ServicesSection';
+import ProjectsSection from '../components/ProjectsSection';
+import ContactSection from '../components/ContactSection';
+import Footer from '../components/Footer';
 
 const Index = () => {
+  const [showMarioAnimation, setShowMarioAnimation] = useState(true);
+  const [showContent, setShowContent] = useState(false);
+
+  useEffect(() => {
+    // Check if animation was already shown in this session
+    const animationShown = sessionStorage.getItem('marioAnimationShown');
+    if (animationShown) {
+      setShowMarioAnimation(false);
+      setShowContent(true);
+    }
+  }, []);
+
+  const handleAnimationComplete = () => {
+    setShowMarioAnimation(false);
+    setShowContent(true);
+    sessionStorage.setItem('marioAnimationShown', 'true');
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen">
+      {/* Mario Animation */}
+      {showMarioAnimation && (
+        <MarioAnimation onComplete={handleAnimationComplete} />
+      )}
+
+      {/* Main Content */}
+      {showContent && (
+        <div className="animate-fade-in">
+          <Header />
+          <main>
+            <HeroSection />
+            <AboutSection />
+            <ServicesSection />
+            <ProjectsSection />
+            <ContactSection />
+          </main>
+          <Footer />
+        </div>
+      )}
     </div>
   );
 };
